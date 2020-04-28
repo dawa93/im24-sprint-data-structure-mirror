@@ -1,21 +1,12 @@
-const Tree = function(value) {
-  const newTree = {};
-  newTree.value = value;
+class TreeNode {
+  constructor(value) {
+    this.value = value;
+    this.children = [];
+  }
 
-  // your code here
-  newTree.children = null; // fix me
+  addChild(value) {}
 
-  return newTree;
-};
+  contains(value) {}
+}
 
-const treeMethods = {};
-
-treeMethods.addChild = function(value) {};
-
-treeMethods.contains = function(target) {};
-
-/*
- * Complexity: What is the time complexity of the above functions?
- */
-
-module.exports = Tree;
+module.exports = TreeNode;

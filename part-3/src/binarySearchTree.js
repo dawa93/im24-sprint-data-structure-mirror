@@ -1,7 +1,15 @@
-const BinarySearchTree = function(value) {};
+class BinarySearchTreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
 
-/*
- * Complexity: What is the time complexity of the above functions?
- */
+  insert(value) {}
 
-module.exports = BinarySearchTree;
+  contains(value) {}
+
+  inorder(callback) {}
+}
+
+module.exports = BinarySearchTreeNode;

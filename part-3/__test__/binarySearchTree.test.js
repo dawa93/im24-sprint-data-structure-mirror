@@ -1,43 +1,46 @@
-const BinarySearchTree = require("../src/binarySearchTree");
+const BinarySearchTreeNode = require('../src/binarySearchTree');
 
-describe("binarySearchTree", function() {
-  var binarySearchTree;
+describe('binarySearchTree', function() {
+  var rootNode;
 
   beforeEach(function() {
-    binarySearchTree = BinarySearchTree(5);
+    rootNode = new BinarySearchTreeNode(5);
   });
 
-  it('should have methods named "insert", "contains", and "depthFirstLog', function() {
-    expect(binarySearchTree).toHaveProperty("insert");
-    expect(binarySearchTree).toHaveProperty("contains");
-    expect(binarySearchTree).toHaveProperty("depthFirstLog");
+  it('should have methods named "insert", "contains", and "inorder', function() {
+    expect(rootNode).toHaveProperty('insert');
+    expect(rootNode).toHaveProperty('contains');
+    expect(rootNode).toHaveProperty('inorder');
   });
 
-  it("should insert values at the correct location in the tree", function() {
-    binarySearchTree.insert(2);
-    binarySearchTree.insert(3);
-    binarySearchTree.insert(7);
-    binarySearchTree.insert(6);
-    expect(binarySearchTree.left.right.value).toEqual(3);
-    expect(binarySearchTree.right.left.value).toEqual(6);
+  it('should insert values at the correct location in the tree', function() {
+    rootNode.insert(2);
+    rootNode.insert(3);
+    rootNode.insert(7);
+    rootNode.insert(6);
+    expect(rootNode.left.right.value).toEqual(3);
+    expect(rootNode.right.left.value).toEqual(6);
   });
 
   it('should have a working "contains" method', function() {
-    binarySearchTree.insert(2);
-    binarySearchTree.insert(3);
-    binarySearchTree.insert(7);
-    expect(binarySearchTree.contains(7)).toEqual(true);
-    expect(binarySearchTree.contains(8)).toEqual(false);
+    rootNode.insert(2);
+    rootNode.insert(3);
+    rootNode.insert(7);
+    expect(rootNode.contains(7)).toEqual(true);
+    expect(rootNode.contains(8)).toEqual(false);
   });
 
-  it('should execute a callback on every value in a tree using "depthFirstLog"', function() {
+  it('should execute a callback on every value in a tree using "inorder"', function() {
     var array = [];
     var func = function(value) {
       array.push(value);
     };
-    binarySearchTree.insert(2);
-    binarySearchTree.insert(3);
-    binarySearchTree.depthFirstLog(func);
-    expect(array).toEqual([5, 2, 3]);
+    rootNode.insert(2);
+    rootNode.insert(3);
+    rootNode.insert(8);
+    rootNode.insert(6);
+    rootNode.insert(10);
+    rootNode.inorder(func);
+    expect(array).toEqual([2, 3, 5, 6, 8, 10]);
   });
 });
