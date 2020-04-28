@@ -4,7 +4,7 @@ class TreeNode {
     this.children = [];
   }
 
-  addChild(value) {}
+  insertNode(value) {}
 
   contains(value) {}
 }

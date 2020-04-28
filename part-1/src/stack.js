@@ -3,20 +3,11 @@ class Stack {
     this.storage = {};
   }
 
-  size() {
-    // TODO: write here
-    return;
-  }
+  size() {}
 
-  push(element) {
-    // TODO: write here
-    return;
-  }
+  push(element) {}
 
-  pop() {
-    // TODO: write here
-    return;
-  }
+  pop() {}
 }
 
 module.exports = Stack;

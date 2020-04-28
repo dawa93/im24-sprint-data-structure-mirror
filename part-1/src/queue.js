@@ -1,23 +1,13 @@
 class Queue {
   constructor() {
-    // TODO: write something here...
     this.storage = {};
   }
 
-  size() {
-    // TODO: write something here...
-    return;
-  }
+  size() {}
 
-  enqueue(element) {
-    // TODO: write something here...
-    return;
-  }
+  enqueue(element) {}
 
-  dequeue() {
-    // TODO: write something here...
-    return;
-  }
+  dequeue() {}
 }
 
 module.exports = Queue;

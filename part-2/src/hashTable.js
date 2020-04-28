@@ -9,24 +9,14 @@ class HashTable {
 
   insert(key, value) {
     const index = hashFunction(key, this._limit);
-    // TODO: write something here...
-    console.log(index);
-
-    return;
   }
 
   retrieve(key) {
     const index = hashFunction(key, this._limit);
-    // TODO: write something here...
-
-    return;
   }
 
   remove(key) {
     const index = hashFunction(key, this._limit);
-    // TODO: write something here...
-
-    return;
   }
 }
 

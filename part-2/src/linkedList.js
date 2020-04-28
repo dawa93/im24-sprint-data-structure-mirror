@@ -1,50 +1,29 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
 class LinkedList {
   constructor() {
     this.headNode = null;
     this.size = 0;
   }
 
-  add(value) {
-    // TODO: write something here...
-    return;
-  }
+  add(value) {}
 
-  addAt(index, value) {
-    // TODO: write something here...
-    return;
-  }
+  addAt(index, value) {}
 
-  remove(value) {
-    // TODO: write something here...
-    return;
-  }
+  remove(value) {}
 
-  get(index) {
-    // TODO: write something here...
-    return;
-  }
+  get(index) {}
 
-  contains(value) {
-    // TODO: write something here...
-    return;
-  }
+  contains(value) {}
 
-  indexOf(value) {
-    // TODO: write something here...
-    return;
-  }
+  indexOf(value) {}
 
-  size() {
-    // TODO: write something here...
-    return;
-  }
-}
-
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
+  size() {}
 }
 
 module.exports = LinkedList;
