@@ -1,4 +1,4 @@
-const { LimitedArray, getIndexBelowMaxForKey } = require("./hashTableHelpers");
+const {LimitedArray, getIndexBelowMaxForKey} = require('./hashTableHelpers');
 
 const HashTable = function() {
   this._limit = 8;
