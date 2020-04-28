@@ -1,6 +1,7 @@
 class Stack {
   constructor() {
     this.storage = {};
+    this.top = 0;
   }
 
   size() {}

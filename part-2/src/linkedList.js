@@ -7,17 +7,16 @@ class Node {
 
 class LinkedList {
   constructor() {
-    this.headNode = null;
-    this.size = 0;
+    this.head = null;
+    this.tail = null;
+    this._size = 0;
   }
 
-  add(value) {}
-
-  addAt(index, value) {}
+  addToTail(value) {}
 
   remove(value) {}
 
-  get(index) {}
+  getNodeAt(index) {}
 
   contains(value) {}
 

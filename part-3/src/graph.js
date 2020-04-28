@@ -1,6 +1,8 @@
 /* Undirected Graph */
 class Graph {
-  constructor() {}
+  constructor() {
+    this.nodes = {};
+  }
 
   addNode(node) {}
 

@@ -14,7 +14,6 @@ describe('graph', function() {
     expect(graph).toHaveProperty('hasEdge');
     expect(graph).toHaveProperty('addEdge');
     expect(graph).toHaveProperty('removeEdge');
-    expect(graph).toHaveProperty('forEachNode');
   });
 
   it('should store values as nodes that were inserted', function() {
@@ -35,7 +34,7 @@ describe('graph', function() {
     graph.addNode(3);
     graph.addEdge(3, 2);
     expect(graph.hasEdge(3, 2)).toEqual(true);
-    expect(graph.hasEdge(2, 2)).toEqual(true);
+    expect(graph.hasEdge(2, 3)).toEqual(true);
     expect(graph.hasEdge(3, 1)).toEqual(false);
   });
 

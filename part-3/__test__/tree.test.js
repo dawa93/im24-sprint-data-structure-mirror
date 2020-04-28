@@ -32,8 +32,8 @@ describe('tree', function() {
     rootNode.insertNode(5);
     rootNode.insertNode(6);
     rootNode.children[0].insertNode(7);
-    expect(childNode.children.length).toEqual(1);
-    expect(childNode.contains(7)).toEqual(true);
+    expect(rootNode.children[0].children.length).toEqual(1);
+    expect(rootNode.children[0].contains(7)).toEqual(true);
   });
 
   it('should correctly detect nested children', function() {

@@ -5,7 +5,7 @@ class BinarySearchTreeNode {
     this.right = null;
   }
 
-  insertNode(value) {}
+  insert(value) {}
 
   contains(value) {}
 

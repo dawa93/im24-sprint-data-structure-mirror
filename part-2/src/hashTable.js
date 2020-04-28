@@ -3,6 +3,7 @@ const hashFunction = require('./helpers/hashFunction');
 
 class HashTable {
   constructor() {
+    this._size = 0;
     this._limit = 8;
     this._storage = LimitedArray(this._limit);
   }
