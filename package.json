@@ -4,10 +4,11 @@
   "description": "Codestates Immersive Course Sprint",
   "scripts": {
     "test": "jest",
-    "test:part-one": "jest part-one/",
-    "test:part-two": "jest part-two/",
+    "test:part1": "jest part-1/",
+    "test:part2": "jest part-2/",
+    "test:part3": "jest part-3/",
     "precommit": "lint-staged",
-    "lint": "eslint part-one/src part-two/src --quiet",
+    "lint": "eslint **/*.js --quiet",
     "submit": "node .travis/submit.js"
   },
   "lint-staged": {
@@ -26,12 +27,10 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "colors": "^1.3.3",
-    "eslint": "^5.11.1",
+    "eslint": "^5.16.0",
     "husky": "^0.14.3",
-    "jest": "^24.1.0",
-    "lint-staged": "^7.2.2",
-    "npm-run-all": "^4.1.5",
-    "underscore": "^1.9.1"
+    "jest": "^24.9.0",
+    "lint-staged": "^7.3.0",
+    "underscore": "^1.10.2"
   }
 }
