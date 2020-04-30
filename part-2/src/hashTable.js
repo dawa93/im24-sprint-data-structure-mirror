@@ -19,6 +19,8 @@ class HashTable {
   remove(key) {
     const index = hashFunction(key, this._limit);
   }
+
+  _resize(newLimit) {}
 }
 
 module.exports = HashTable;
