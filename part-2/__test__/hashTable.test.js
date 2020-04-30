@@ -40,8 +40,8 @@ describe('hashTable', function() {
   });
 
   it('should handle hash function collisions', function() {
-    var v1 = '1'; // same key
-    var v2 = '9'; // same key
+    let v1 = '1'; // hash function의 결과가 똑같습니다. hashFunction('1', 8) === 1
+    let v2 = '9'; // hash function의 결과가 똑같습니다. hashFunction('9', 8) === 1
 
     hashTable.insert(v1, v1);
     hashTable.insert(v2, v2);
