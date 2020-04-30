@@ -4,7 +4,11 @@ class Graph {
     this.nodes = {};
   }
 
-  addNode(node) {}
+  addNode(node) {
+    this.nodes[node] = this.nodes[node] || {
+      edges: {},
+    };
+  }
 
   contains(node) {}
 

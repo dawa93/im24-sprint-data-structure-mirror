@@ -5,8 +5,8 @@
   "scripts": {
     "test": "jest",
     "test:part1": "jest part-1/",
-    "test:part2": "jest part-2/",
-    "test:part3": "jest part-3/",
+    "test:part2": "jest part-2/__test__/index.test.js",
+    "test:part3": "jest part-3/__test__/index.test.js",
     "precommit": "lint-staged",
     "lint": "eslint **/*.js --quiet",
     "submit": "node .travis/submit.js"
