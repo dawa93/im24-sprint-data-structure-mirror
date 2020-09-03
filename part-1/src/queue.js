@@ -13,6 +13,10 @@ class Queue {
   }
 
   enqueue(element) {
+    if (this.front === this.rear) {
+      this.front = 0;
+      this.rear = 0;
+    }
     this.rear++;
     this.storage[this.rear] = element;
     // rear + 1에 element가 추가되어야한다.
@@ -20,10 +24,12 @@ class Queue {
   }
 
   dequeue() {
-    this.front++;
-    if (this.front > this.rear) {
-      this.front = this.rear;
+    if (this.front === this.rear) {
+      this.front = 0;
+      this.rear = 0;
+      return 0;
     }
+    this.front++
     let temp = this.storage[this.front];
     delete this.storage[this.front];
     return temp;
