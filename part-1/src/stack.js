@@ -4,11 +4,23 @@ class Stack {
     this.top = 0;
   }
 
-  size() {}
+  size() {
+    return this.top;
+  }
 
-  push(element) {}
+  push(element) {
+    this.top++;
+    this.storage[this.top] = element;
+  }
 
-  pop() {}
+  pop() {
+    if (this.top === 0) {
+      return 0;
+    }
+    let temp = this.storage[this.top];
+    delete this.storage[this.top];
+    this.top--;
+    return temp;
+  }
 }
-
 module.exports = Stack;
