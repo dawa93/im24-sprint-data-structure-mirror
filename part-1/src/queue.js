@@ -8,10 +8,8 @@ class Queue {
   size() {
     return Object.keys(this.storage).length;
     // let sizeSum = this.rear - this.front;
-    // return (sizeSum >= 0) ? sizeSum : 0;
-    // rear가 아니라, 객체의 pror의 갯수가 return 되어야한다.
-    // 객체의 prop의 갯수를 세는 methods는?
-
+    // return sizeSum
+    // 둘 다 통과된다. 
   }
 
   enqueue(element) {
@@ -27,7 +25,6 @@ class Queue {
       this.front = this.rear;
     }
     let temp = this.storage[this.front];
-    // if (this.storage.hasOwnProperty('this.front')) {
     delete this.storage[this.front];
     return temp;
 
