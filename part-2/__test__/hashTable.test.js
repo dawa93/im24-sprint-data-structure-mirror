@@ -1,7 +1,7 @@
 const HashTable = require('../src/hashTable');
 const _ = require('underscore');
 
-describe('hashTable', function() {
+describe('hashTable', function () {
   let hashTable;
   let people = [
     ['Steven', 'Tyler'],
@@ -13,33 +13,33 @@ describe('hashTable', function() {
     ['Alan', 'Turing'],
   ];
 
-  beforeEach(function() {
+  beforeEach(function () {
     hashTable = new HashTable();
   });
 
-  it('should have methods named "insert", "remove", and "retrieve', function() {
+  it('should have methods named "insert", "remove", and "retrieve', function () {
     expect(hashTable).toHaveProperty('insert');
     expect(hashTable).toHaveProperty('remove');
     expect(hashTable).toHaveProperty('retrieve');
   });
 
-  it('should store values that were inserted', function() {
+  it('should store values that were inserted', function () {
     hashTable.insert('Steven', 'Seagal');
     expect(hashTable.retrieve('Steven')).toEqual('Seagal');
   });
 
-  it('should not contain values that were not inserted', function() {
+  it('should not contain values that were not inserted', function () {
     hashTable.insert('Steven', 'Spielberg');
     expect(hashTable.retrieve('Steven')).not.toEqual('Seagal');
   });
 
-  it('should overwrite values that have the same key', function() {
+  it('should overwrite values that have the same key', function () {
     hashTable.insert('Bob', 'Loblaw');
     hashTable.insert('Bob', 'Barker');
     expect(hashTable.retrieve('Bob')).toEqual('Barker');
   });
 
-  it('should handle hash function collisions', function() {
+  it('should handle hash function collisions', function () {
     let v1 = '1'; // hash function의 결과가 똑같습니다. hashFunction('1', 8) === 1
     let v2 = '9'; // hash function의 결과가 똑같습니다. hashFunction('9', 8) === 1
 
@@ -49,14 +49,14 @@ describe('hashTable', function() {
     expect(hashTable.retrieve(v2)).toEqual(v2);
   });
 
-  it('should not contain values that were removed', function() {
+  it('should not contain values that were removed', function () {
     hashTable.insert('Steven', 'Tyler');
     hashTable.remove('Steven');
     expect(hashTable.retrieve('Steven')).toEqual(undefined);
   });
 
-  it('should double in size when needed', function() {
-    _.each(people, function(person) {
+  it('should double in size when needed', function () {
+    _.each(people, function (person) {
       var firstName = person[0];
       var lastName = person[1];
       hashTable.insert(firstName, lastName);
@@ -65,8 +65,8 @@ describe('hashTable', function() {
     expect(hashTable._limit).toEqual(16);
   });
 
-  it('should halve in size when needed', function() {
-    _.each(people, function(person) {
+  it('should halve in size when needed', function () {
+    _.each(people, function (person) {
       var firstName = person[0];
       var lastName = person[1];
       hashTable.insert(firstName, lastName);
