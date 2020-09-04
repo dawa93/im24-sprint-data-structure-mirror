@@ -33,7 +33,7 @@ class HashTable {
   retrieve(key) {
     // 주어진 키에 해당하는 값을 반환합니다. 없다면 undefined를 반환합니다.
     const index = hashFunction(key, this._limit);
-    if (!this._storage.get(index).hasOwnProperty(key)) {
+    if (this._storage.get(index).hasOwnProperty(key) === undefined) {
       return undefined;
     }
     return this._storage.get(index)[key];
@@ -52,13 +52,16 @@ class HashTable {
   }
 
   // _resize(newLimit) {
-  //   this._limit = newLimit * 2;
-  //   let temp = this._storage;
-  //   this._storage = LimitedArray(this._limit);
+  //   // 이전 storage 값.  => 이전것을 새로운 것에 붙여넣기 위해서
+  //   let originalStorage = this._storage;
+  //   // 리밋을 두배로 만들고, storage 와 size를 초기화
+  //   newLimit = this._limit * 2;
+  //   this._storage = LimitedArray(newLimit);
   //   this._size = 0;
 
-  // for (let el of temp) {
-  //   console.log(el);
+  //   //해야 할 일
+  //   // 1. 오리지날 스토리지 값을 새로운 스토리지에 담는다.
+  //   for (let i = 0; i < originStorage.length; i++) {}
   // }
 }
 //해시 테이블의 스토리지 배열을 newLimit으로 리사이징하는 함수입니다.
