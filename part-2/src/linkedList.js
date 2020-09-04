@@ -23,7 +23,6 @@ class LinkedList {
     this._size++;
   }
 
-
   remove(value) {
     if (this.head.value === value) {
       let temp = this.head;
@@ -31,7 +30,6 @@ class LinkedList {
       this._size--;
       return temp;
     } // 만약 value가 1번이면 문제 없음
-
 
     let realHead = this.head;
     while (realHead.next.value !== value) {
@@ -52,12 +50,46 @@ class LinkedList {
     return result;
   }
 
+  getNodeAt(index) {
+    if (index > this._size) {
+      return undefined;
+    }
 
-  // getNodeAt(index) { }
+    if (index === 0) {
+      return this.head;
+    }
 
-  // contains(value) { }
+    let result = this.head;
+    for (let i = 0; i < index; i++) {
+      result = result.next;
+    }
+    return result;
+  }
 
-  // indexOf(value) { }
+  indexOf(value) {
+    let head = this.head;
+    for (let i = 0; i < this._size; i++) {
+      if (head.value === value) {
+        return i;
+      }
+      head = head.next;
+    }
+    return -1;
+  }
+
+  contains(value) {
+    let result = false;
+    let head = this.head;
+
+    for (let i = 0; i < this._size; i++) {
+      if (head.value === value) {
+        result = true;
+      }
+      head = head.next;
+    }
+
+    return result;
+  }
 
   size() {
     return this._size;
