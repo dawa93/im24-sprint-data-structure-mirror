@@ -25,40 +25,54 @@ class HashTable {
     this._size++;
 
     if (this._size / this._limit > 0.75) {
-      this._resize(this._limit);
+      this._resize(this._limit * 2);
     }
   }
   // console.log(this._storage.get(index));
 
 
-  retrieve(key) { // 주어진 키에 해당하는 값을 반환합니다. 없다면 undefined를 반환합니다.
+  retrieve(key) {
     const index = hashFunction(key, this._limit);
-    if (!this._storage.get(index).hasOwnProperty(key)) {
+    if (!this._storage.get(index)) {
+      //hasOwnProperty를 안해도 되는 이유=> hashFunction을 거치기 때문에
+      //있으면 반드시 get(index)에 배정받았어한다. 
+      //hsOwnProperty를 하지 않아도 if 조건이 false라면 반드시 없고, true라면 반드시 있다.
       return undefined;
-    } return this._storage.get(index)[key];
+    } else {
+      return this._storage.get(index)[key];
+    }
   }
+
+
+  // retrieve(key) { // 주어진 키에 해당하는 값을 반환합니다. 없다면 undefined를 반환합니다.
+  //   const index = hashFunction(key, this._limit);
+  //   if (!this._storage.get(index).hasOwnProperty(key)) {
+  //     return undefine
+  //   } return this._storage.get(index)[key];
+  // }
 
   remove(key) { //주어진 키에 해당하는 값을 삭제하고 값을 반환합니다. 없다면 undefined를 반환합니다.
     const index = hashFunction(key, this._limit);
-    if (!this._storage.get(index).hasOwnProperty(key)) {
+    if (!this._storage.get(index)) {
       return undefined;
+    } else {
+      delete this._storage.get(index)[key];
+      this._size--;
     }
-    this._size--;
-    let result = this._storage.get(index)[key];
-    delete this._storage.get(index)[key];
-    return result;
+
+    if (this._size < this._limit * 0.25) {
+      this._resize(this._limit / 2);
+    }
 
   }
 
-  // _resize(newLimit) {
-  //   this._limit = newLimit * 2;
-  //   let temp = this._storage;
-  //   this._storage = LimitedArray(this._limit);
-  //   this._size = 0;
+  _resize(newLimit) {
+    this._limit = newLimit;
+    this._size = 0;
+    this._storage = LimitedArray(this._limit);
 
-  // for (let el of temp) {
-  //   console.log(el);
-  // }
+
+  }
 }
 //해시 테이블의 스토리지 배열을 newLimit으로 리사이징하는 함수입니다. 
 //리사이징 후 저장되어 있던 값을 전부 다시 해싱을 해주어야 합니다. 구현 후 HashTable 내부에서 사용하시면 됩니다.
@@ -70,5 +84,6 @@ class HashTable {
 
 
 module.exports = HashTable;
+
 
 
