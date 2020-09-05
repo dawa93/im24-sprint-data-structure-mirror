@@ -67,19 +67,32 @@ class HashTable {
   }
 
   _resize(newLimit) {
+    let beforeLim = this._limit;
+    let beforeSto = this._storage;
     this._limit = newLimit;
     this._size = 0;
     this._storage = LimitedArray(this._limit);
 
+    for (let i = 0; i < beforeLim; i++) {
+      if (beforeSto.get(i)) {
+        for (let key in beforeSto.get(i)) {
+          this.insert(key, beforeSto.get(i)[key]);
+        }
+      }
+    }
+
+
+    //해시 테이블의 스토리지 배열을 newLimit으로 리사이징하는 함수입니다. 
+    //리사이징 후 저장되어 있던 값을 전부 다시 해싱을 해주어야 합니다. 구현 후 HashTable 내부에서 사용하시면 됩니다.
+
+    //함수를 구현해 놓고
+    //인서트와 리무브 리턴 직전에, -> 만약에 사이즈/리미트가 0.75 이상이 되면 
+    //리사이즈 함수를 실행시키는데 ->0.75 이상이면 곱하기 이
+
+
 
   }
 }
-//해시 테이블의 스토리지 배열을 newLimit으로 리사이징하는 함수입니다. 
-//리사이징 후 저장되어 있던 값을 전부 다시 해싱을 해주어야 합니다. 구현 후 HashTable 내부에서 사용하시면 됩니다.
-
-//함수를 구현해 놓고
-//인서트와 리무브 리턴 직전에, -> 만약에 사이즈/리미트가 0.75 이상이 되면 
-//리사이즈 함수를 실행시키는데 ->0.75 이상이면 곱하기 이
 
 
 
