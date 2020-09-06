@@ -25,44 +25,66 @@ class HashTable {
     this._size++;
 
     if (this._size / this._limit > 0.75) {
-      this._resize(this._limit);
+      this._resize(this._limit * 2);
     }
   }
   // console.log(this._storage.get(index));
 
   retrieve(key) {
-    // 주어진 키에 해당하는 값을 반환합니다. 없다면 undefined를 반환합니다.
     const index = hashFunction(key, this._limit);
-    if (this._storage.get(index).hasOwnProperty(key) === undefined) {
+    if (!this._storage.get(index)) {
+      //hasOwnProperty를 안해도 되는 이유=> hashFunction을 거치기 때문에
+      //있으면 반드시 get(index)에 배정받았어한다.
+      //hsOwnProperty를 하지 않아도 if 조건이 false라면 반드시 없고, true라면 반드시 있다.
       return undefined;
+    } else {
+      return this._storage.get(index)[key];
     }
-    return this._storage.get(index)[key];
   }
+
+  // retrieve(key) { // 주어진 키에 해당하는 값을 반환합니다. 없다면 undefined를 반환합니다.
+  //   const index = hashFunction(key, this._limit);
+  //   if (!this._storage.get(index).hasOwnProperty(key)) {
+  //     return undefine
+  //   } return this._storage.get(index)[key];
+  // }
 
   remove(key) {
     //주어진 키에 해당하는 값을 삭제하고 값을 반환합니다. 없다면 undefined를 반환합니다.
     const index = hashFunction(key, this._limit);
-    if (!this._storage.get(index).hasOwnProperty(key)) {
+    if (!this._storage.get(index)) {
       return undefined;
+    } else {
+      delete this._storage.get(index)[key];
+      this._size--;
     }
-    this._size--;
-    let result = this._storage.get(index)[key];
-    delete this._storage.get(index)[key];
-    return result;
+
+    if (this._size < this._limit * 0.25) {
+      this._resize(this._limit / 2);
+    }
   }
 
   // _resize(newLimit) {
-  //   // 이전 storage 값.  => 이전것을 새로운 것에 붙여넣기 위해서
-  //   let originalStorage = this._storage;
-  //   // 리밋을 두배로 만들고, storage 와 size를 초기화
-  //   newLimit = this._limit * 2;
-  //   this._storage = LimitedArray(newLimit);
+  //   this._limit = newLimit;
   //   this._size = 0;
-
-  //   //해야 할 일
-  //   // 1. 오리지날 스토리지 값을 새로운 스토리지에 담는다.
-  //   for (let i = 0; i < originStorage.length; i++) {}
+  //   this._storage = LimitedArray(this._limit);
   // }
+
+  _resize(newLimit) {
+    let beforeLim = this._limit;
+    let beforeSto = this._storage;
+    this._limit = newLimit;
+    this._size = 0;
+    this._storage = LimitedArray(this._limit);
+
+    for (let i = 0; i < beforeLim; i++) {
+      if (beforeSto.get(i)) {
+        for (let key in beforeSto.get(i)) {
+          this.insert(key, beforeSto.get(i)[key]);
+        }
+      }
+    }
+  }
 }
 //해시 테이블의 스토리지 배열을 newLimit으로 리사이징하는 함수입니다.
 //리사이징 후 저장되어 있던 값을 전부 다시 해싱을 해주어야 합니다. 구현 후 HashTable 내부에서 사용하시면 됩니다.
