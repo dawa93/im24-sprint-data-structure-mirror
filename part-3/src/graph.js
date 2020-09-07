@@ -16,12 +16,18 @@ class Graph {
     } return false
   }
 
-  // removeNode(node) {
-
-  // }
+  removeNode(node) {
+    if (this.nodes[node]["edges"]) {
+      let connected = Object.keys(this.nodes[node]["edges"]);
+      connected.forEach(el => {
+        delete this.nodes[`${el}`]["edges"][node];
+      })
+      delete this.nodes[node];
+    }
+  }
 
   hasEdge(fromNode, toNode) {
-    if (this.nodes[fromNode]["edges"][`${toNode}`] === true && this.nodes[toNode]["edges"][`${fromNode}`] === true) {
+    if (this.nodes[fromNode]["edges"][`${toNode}`] && this.nodes[toNode]["edges"][`${fromNode}`]) {
       return true;
     } return false;
   }
