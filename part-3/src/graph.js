@@ -10,15 +10,32 @@ class Graph {
     };
   }
 
-  contains(node) {}
+  contains(node) {
+    if (this.nodes[node]) {
+      return true
+    } return false
+  }
 
-  removeNode(node) {}
+  // removeNode(node) {
 
-  hasEdge(fromNode, toNode) {}
+  // }
 
-  addEdge(fromNode, toNode) {}
+  hasEdge(fromNode, toNode) {
+    if (this.nodes[fromNode]["edges"][`${toNode}`] === true && this.nodes[toNode]["edges"][`${fromNode}`] === true) {
+      return true;
+    } return false;
+  }
 
-  removeEdge(fromNode, toNode) {}
+  addEdge(fromNode, toNode) {
+    this.nodes[fromNode]["edges"][`${toNode}`] = true;
+    this.nodes[toNode]["edges"][`${fromNode}`] = true;
+  }
+
+  removeEdge(fromNode, toNode) {
+    delete this.nodes[fromNode]["edges"][`${toNode}`];
+    delete this.nodes[toNode]["edges"][`${fromNode}`];
+  }
 }
+
 
 module.exports = Graph;
