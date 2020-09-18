@@ -9,7 +9,7 @@ class Queue {
     return Object.keys(this.storage).length;
     // let sizeSum = this.rear - this.front;
     // return sizeSum
-    // 둘 다 통과된다. 
+    // 둘 다 통과된다.
   }
 
   enqueue(element) {
@@ -20,7 +20,6 @@ class Queue {
     this.rear++;
     this.storage[this.rear] = element;
     // rear + 1에 element가 추가되어야한다.
-
   }
 
   dequeue() {
@@ -29,7 +28,7 @@ class Queue {
       this.rear = 0;
       return 0;
     }
-    this.front++
+    this.front++;
     let temp = this.storage[this.front];
     delete this.storage[this.front];
     return temp;
@@ -39,5 +38,3 @@ class Queue {
 }
 
 module.exports = Queue;
-
-
